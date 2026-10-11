@@ -32,7 +32,7 @@ datasets/
 |---|---|---|
 | `dmml_sinhvien.csv` | Mục 2.7 (toàn bộ Phần A–E), Mục 2.4, Phụ lục B | 200 × 8 |
 | `dmml_hoatdong_sinhvien.csv` | Dự án sáu chặng, từ Chương 1 đến Chương 6 | 800 × 8 |
-| `ung_thu_vu_wdbc.csv` | Mục 2.5.1 | 569 × 31 |
+| `ung_thu_vu_wdbc.csv` | bản dự phòng khi không có mạng | 569 × 31 |
 
 ### `dmml_sinhvien.csv` — đăng ký môn học
 
@@ -81,8 +81,16 @@ Nhãn `NguyCo` của Chặng 4 không có sẵn trong tệp: người học tự
 
 ### `ung_thu_vu_wdbc.csv` — Breast Cancer Wisconsin
 
-569 mẫu × 30 đặc trưng, cột nhãn `ac_tinh` với giá trị 1 là ác tính
-(212 ác tính, 357 lành tính).
+**Giáo trình không đọc tệp này.** Mọi đoạn mã dùng bộ Wisconsin Diagnostic đều
+nạp trực tiếp qua `sklearn.datasets.load_breast_cancer()`, nên bình thường
+không cần tới tệp. Tệp được giữ lại chỉ để làm bản dự phòng cho người học
+không có mạng khi làm bài.
+
+569 mẫu × 30 đặc trưng. Lưu ý về nhãn: cột `ac_tinh` trong tệp này đã mã hóa
+**1 là ác tính** (212 ác tính, 357 lành tính), tức tương đương với
+`(target == 0).astype(int)` mà giáo trình hướng dẫn. Nhãn `target` gốc của
+scikit-learn thì ngược lại: 0 là ác tính. Nếu đối chiếu kết quả giữa hai
+đường, phải thống nhất quy ước nhãn trước.
 
 ## `datasets/micro/` — ví dụ tính tay
 
