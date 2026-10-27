@@ -120,13 +120,72 @@ df = pd.read_csv('datasets/micro/ch3_giohang_6giaodich.csv', index_col='GiaoDich
 frequent = apriori(df.astype(bool), min_support=0.5, use_colnames=True)
 ```
 
+## `datasets/weka/` — tám tập dữ liệu đi kèm WEKA
+
+Đây là **bản sao dự phòng**, giữ nguyên không sửa một ký tự. Nguồn chính thức
+là kho của Đại học Waikato, nhóm tác giả WEKA:
+
+```
+https://git.cms.waikato.ac.nz/weka/weka/-/raw/main/trunk/wekadocs/data/<tên tệp>
+```
+
+Tám tệp này vốn nằm trong thư mục `data` của WEKA sau khi cài đặt. Kho chép
+lại để người học tải được trực tiếp mà không cần cài WEKA, và để đường dẫn
+trong giáo trình không hỏng nếu kho gốc đổi địa chỉ.
+
+| Tệp | Dùng ở | Bản ghi | Thuộc tính | Lớp |
+|---|---|---|---|---|
+| `iris.arff` | Chương 4, Chương 5, Phụ lục A | 150 | 4 | 3 |
+| `weather.nominal.arff` | Phụ lục A | 14 | 4 | 2 |
+| `supermarket.arff` | Mục 3.4 | 4 627 | 217 | – |
+| `breast-cancer.arff` | Mục 6.4, Phụ lục A | 286 | 9 | 2 |
+| `diabetes.arff` | Phụ lục A, bài tập | 768 | 8 | 2 |
+| `vote.arff` | Phụ lục A | 435 | 16 | 2 |
+| `glass.arff` | Phụ lục A, bài tập | 214 | 9 | 7 |
+| `soybean.arff` | Phụ lục A | 683 | 35 | 19 |
+
+### Ghi công bắt buộc
+
+Phần đầu mỗi tệp `.arff` chứa nguyên văn thông tin xuất xứ do người tạo dữ
+liệu yêu cầu. **Giữ nguyên phần đó khi sao chép hoặc trích dẫn.** Riêng
+`breast-cancer.arff` có yêu cầu ghi công tường minh: dữ liệu do Viện Ung bướu,
+Trung tâm Y khoa Đại học Ljubljana cung cấp, với lời cảm ơn hai bác sĩ
+M. Zwitter và M. Soklic.
+
+`supermarket.arff` không kèm thông tin xuất xứ nào; tệp được phát hành cùng
+WEKA và chép lại nguyên trạng từ đó.
+
+### Hai điều cần biết khi đọc bằng Python
+
+**Thứ nhất — ngưỡng Support của WEKA không phải là tỷ lệ.** WEKA hiển thị
+`Minimum support: 0.15 (694 instances)`: nó nhân 0,15 × 4 627 = 694,05 rồi
+**làm tròn xuống** 694 và lọc theo số đếm đó. `mlxtend` lại lọc theo tỷ lệ,
+tức đòi số đếm từ 694,05 trở lên, nghĩa là từ 695. Muốn ra đúng kết quả WEKA
+thì phải viết:
+
+```python
+nguong = 694 / 4627        # KHÔNG phải 0.15
+fi = apriori(X, min_support=nguong, use_colnames=True, max_len=6)
+```
+
+Dùng đúng ngưỡng này, `mlxtend` cho lại y hệt WEKA: L(1)=44, L(2)=380,
+L(3)=910, L(4)=633, L(5)=105, L(6)=1, và luật mạnh nhất
+`biscuits + frozen foods + fruit + total=high` ⇒ `bread and cake` với
+788 ⇒ 723, Confidence 0,9175, Lift 1,27.
+
+**Thứ hai — `soybean.arff` không nạp được bằng `scipy.io.arff`.** Dòng khai
+báo nhãn của thuộc tính `crop-hist` có một dấu cách thừa trước giá trị cuối
+(`, same-lst-sev-yrs`), nên `scipy` coi đó là một nhãn khác với giá trị thật
+trong phần dữ liệu và báo lỗi. WEKA bỏ qua dấu cách này. Giáo trình chỉ dùng
+`soybean.arff` trong WEKA nên không ảnh hưởng; nếu cần đọc bằng Python thì xóa
+dấu cách đó trong bản sao của mình.
+
 ## Dữ liệu lấy từ nơi khác
 
 Một số bộ dữ liệu trong giáo trình **không nằm ở kho này**:
 
-- `iris.arff`, `breast-cancer.arff`, `supermarket.arff`, `diabetes.arff`,
-  `weather.nominal.arff`, `glass.arff`, `vote.arff`, `soybean.arff` — có sẵn
-  trong thư mục `data` của WEKA sau khi cài đặt.
+- Tám tệp `.arff` của WEKA nay đã có bản sao trong `datasets/weka/`; xem mục
+  riêng ở trên. Chúng cũng có sẵn trong thư mục `data` của WEKA sau khi cài.
 - Iris, Wine, Breast Cancer, Diabetes bản scikit-learn — tải trực tiếp bằng
   `sklearn.datasets.load_*`, không cần tệp ngoài.
 

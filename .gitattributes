@@ -1,0 +1,3 @@
+# Giu nguyen tung byte cac tep du lieu goc cua WEKA: khong doi ky tu xuong
+# dong, vi phan ghi cong o dau tep phai sao y ban goc.
+datasets/weka/*.arff -text
