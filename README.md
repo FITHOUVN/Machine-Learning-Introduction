@@ -27,6 +27,7 @@ datasets/
   weka/    tám tập .arff đi kèm WEKA, bản sao dự phòng
 ma/        notebook mã nguồn năm mục thực hành (xem ma/README.md)
 weka/      hướng dẫn thực hành bằng WEKA (xem weka/README.md)
+bai-tap/   Sách bài tập: kho bài tập cuối chương (xem bai-tap/README.md)
 ```
 
 ## `datasets/raw/` — thực hành và dự án
@@ -190,8 +191,19 @@ cuối của năm mục thực hành (2.7, 3.4, 4.4, 5.4, 6.4) nằm trong thư 
 [`ma/`](ma) dưới dạng Jupyter Notebook — xem [`ma/README.md`](ma/README.md).
 Mỗi chỗ trong sách có mã rút gọn đều ghi rõ tệp tương ứng.
 
-Thư mục này **không chứa lời giải** cho các bài ở mục "Câu hỏi ôn tập"; đó là
-phần người học phải tự viết.
+Thư mục này **không chứa lời giải** cho các bài ở mục "Luyện tập"; đó là phần
+người học phải tự viết.
+
+## `bai-tap/` — Sách bài tập
+
+Mục Luyện tập cuối mỗi chương của sách in chỉ còn ba phần: câu hỏi ôn tập lý
+thuyết, **một** bài thực hành có bảng tự so khớp, và một chặng của dự án. Toàn
+bộ kho bài tập còn lại — bài tính tay và các bài trên máy khác — nằm trong
+thư mục [`bai-tap/`](bai-tap), mỗi chương một tệp Markdown, nguyên văn kèm
+mọi gợi ý và khối "Kết quả đối chiếu"; xem [`bai-tap/README.md`](bai-tap/README.md).
+
+Thư mục [`bai-tap/ma/`](bai-tap/ma) chứa mã tái lập các con số trong bảng tự
+so khớp của sáu mục B. Thực hành. Nó cũng không chứa lời giải bài tập.
 
 ## `weka/` — hướng dẫn thực hành bằng WEKA
 
