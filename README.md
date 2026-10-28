@@ -24,6 +24,8 @@ Khi làm bài, hãy ghi lại **mã commit** của kho trong báo cáo. Dữ li�
 datasets/
   raw/     dữ liệu cho các bài thực hành lớn và dự án sáu chặng
   micro/   dữ liệu của các ví dụ tính tay trong sách
+  weka/    tám tập .arff đi kèm WEKA, bản sao dự phòng
+weka/      hướng dẫn thực hành bằng WEKA (xem weka/README.md)
 ```
 
 ## `datasets/raw/` — thực hành và dự án
@@ -135,14 +137,14 @@ trong giáo trình không hỏng nếu kho gốc đổi địa chỉ.
 
 | Tệp | Dùng ở | Bản ghi | Thuộc tính | Lớp |
 |---|---|---|---|---|
-| `iris.arff` | Chương 4, Chương 5, Phụ lục A | 150 | 4 | 3 |
-| `weather.nominal.arff` | Phụ lục A | 14 | 4 | 2 |
+| `iris.arff` | Chương 4, Chương 5, `weka/` | 150 | 4 | 3 |
+| `weather.nominal.arff` | `weka/` | 14 | 4 | 2 |
 | `supermarket.arff` | Mục 3.4 | 4 627 | 217 | – |
-| `breast-cancer.arff` | Mục 6.4, Phụ lục A | 286 | 9 | 2 |
-| `diabetes.arff` | Phụ lục A, bài tập | 768 | 8 | 2 |
-| `vote.arff` | Phụ lục A | 435 | 16 | 2 |
-| `glass.arff` | Phụ lục A, bài tập | 214 | 9 | 7 |
-| `soybean.arff` | Phụ lục A | 683 | 35 | 19 |
+| `breast-cancer.arff` | Mục 6.4, `weka/` | 286 | 9 | 2 |
+| `diabetes.arff` | `weka/`, bài tập | 768 | 8 | 2 |
+| `vote.arff` | `weka/` | 435 | 16 | 2 |
+| `glass.arff` | `weka/`, bài tập | 214 | 9 | 7 |
+| `soybean.arff` | `weka/` | 683 | 35 | 19 |
 
 ### Ghi công bắt buộc
 
@@ -176,9 +178,18 @@ L(3)=910, L(4)=633, L(5)=105, L(6)=1, và luật mạnh nhất
 **Thứ hai — `soybean.arff` không nạp được bằng `scipy.io.arff`.** Dòng khai
 báo nhãn của thuộc tính `crop-hist` có một dấu cách thừa trước giá trị cuối
 (`, same-lst-sev-yrs`), nên `scipy` coi đó là một nhãn khác với giá trị thật
-trong phần dữ liệu và báo lỗi. WEKA bỏ qua dấu cách này. Giáo trình chỉ dùng
+trong phần dữ liệu và báo lỗi. WEKA bỏ qua dấu cách này. Tài liệu chỉ dùng
 `soybean.arff` trong WEKA nên không ảnh hưởng; nếu cần đọc bằng Python thì xóa
 dấu cách đó trong bản sao của mình.
+
+## `weka/` — hướng dẫn thực hành bằng WEKA
+
+Giáo trình in chỉ giữ phần giới thiệu và hướng dẫn cài đặt WEKA ở Phụ lục A.
+Toàn bộ phần thao tác, cách đọc kết quả và ba bài thực hành ứng với Mục 3.4,
+Mục 4.4 và Mục 6.4 đặt trong thư mục [`weka/`](weka) — xem
+[`weka/README.md`](weka/README.md). Nội dung đó bám theo giao diện và phiên
+bản phần mềm nên cần cập nhật theo từng năm học, trong khi sách in giữ nguyên
+qua nhiều khóa.
 
 ## Dữ liệu lấy từ nơi khác
 
