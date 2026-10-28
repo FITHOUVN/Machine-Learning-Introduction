@@ -25,6 +25,7 @@ datasets/
   raw/     dữ liệu cho các bài thực hành lớn và dự án sáu chặng
   micro/   dữ liệu của các ví dụ tính tay trong sách
   weka/    tám tập .arff đi kèm WEKA, bản sao dự phòng
+ma/        notebook mã nguồn năm mục thực hành (xem ma/README.md)
 weka/      hướng dẫn thực hành bằng WEKA (xem weka/README.md)
 ```
 
@@ -181,6 +182,16 @@ báo nhãn của thuộc tính `crop-hist` có một dấu cách thừa trước
 trong phần dữ liệu và báo lỗi. WEKA bỏ qua dấu cách này. Tài liệu chỉ dùng
 `soybean.arff` trong WEKA nên không ảnh hưởng; nếu cần đọc bằng Python thì xóa
 dấu cách đó trong bản sao của mình.
+
+## `ma/` — mã nguồn các mục thực hành
+
+Sách in giữ những đoạn mã ngắn mang ý chính; bản đầy đủ chạy được từ đầu đến
+cuối của năm mục thực hành (2.7, 3.4, 4.4, 5.4, 6.4) nằm trong thư mục
+[`ma/`](ma) dưới dạng Jupyter Notebook — xem [`ma/README.md`](ma/README.md).
+Mỗi chỗ trong sách có mã rút gọn đều ghi rõ tệp tương ứng.
+
+Thư mục này **không chứa lời giải** cho các bài ở mục "Câu hỏi ôn tập"; đó là
+phần người học phải tự viết.
 
 ## `weka/` — hướng dẫn thực hành bằng WEKA
 
